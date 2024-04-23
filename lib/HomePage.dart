@@ -97,26 +97,33 @@ class _HomePageState extends State<HomePage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: searchControllerText,
-                  cursorColor: Colors.amber,
-                  decoration: InputDecoration(
-                      hintText: "Search",
-                      isDense: true,
-                      border: const OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.amber),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                      prefixIcon: const Icon(Icons.search),
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          searchControllerText.clear();
-                        },
-                      )),
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                      textSelectionTheme: const TextSelectionThemeData(
+                          cursorColor: Colors.amber,
+                          selectionColor: Colors.amber,
+                          selectionHandleColor: Colors.amber)),
+                  child: TextField(
+                    controller: searchControllerText,
+                    cursorColor: Colors.amber,
+                    decoration: InputDecoration(
+                        hintText: "Search",
+                        isDense: true,
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.amber),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        prefixIcon: const Icon(Icons.search),
+                        suffixIcon: IconButton(
+                          icon: const Icon(Icons.clear),
+                          onPressed: () {
+                            searchControllerText.clear();
+                          },
+                        )),
+                  ),
                 ),
               ),
 
@@ -224,7 +231,9 @@ class _HomePageState extends State<HomePage> {
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    const SearchPage(title: "Most Popular",)));
+                                    const SearchPage(
+                                      title: "Most Popular",
+                                    )));
 
                         // Navigator.of(context).pushNamed('Discover');
                       },
@@ -266,7 +275,9 @@ class _HomePageState extends State<HomePage> {
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    const SearchPage(title: "Meal Deals",)));
+                                    const SearchPage(
+                                      title: "Meal Deals",
+                                    )));
                       },
                       child: Text(
                         "See all",
